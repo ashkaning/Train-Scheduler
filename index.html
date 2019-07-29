@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        TimeSheet
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://momentjs.com/downloads/moment.js"></script>
+    </title>
+    <style>
+        .current {
+            width: auto;
+            background-color: blue;
+
+
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 20px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th class="current" style="color: white">Train TimeSheet</th>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Train Name</h4>
+                </td>
+                <td>
+                    <h4>Destination</h4>
+                </td>
+                <td>
+                    <h4>Frequency (min)</h4>
+                </td>
+                <td>
+                    <h4>Next Arrival</h4>
+                </td>
+                <td>
+                    <h4>minutes Away</h4>
+                </td>
+            </tr>
+            <!--<tr>
+                <td><label id="employeeName"> </label></td>
+                <td><label id="role"></label> </td>
+                <td><label id="startDate"></label> </td>
+                <td><label id="monthsWorked"></label> </td>
+                <td><label id="monthlyRate"></label> </td>
+            </tr>-->
+            
+        </table>
+        <hr>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Train Name</label>
+                <input type="text" class="form-control" id="tName">
+            </div>
+            <div class="form-group">
+                <label for="role">Destination</label>
+                <input type="text" class="form-control" id="dest" >
+            </div>
+            <div class="form-group">
+                <label for="role">Fist Train Time (HH:mm) Military Time</label>
+                <input type="time" class="form-control" id="fdate">
+            </div>
+            <div class="form-group">
+                <label for="role">Frequency (min)</label>
+                <input type="number" class="form-control" id="freq">
+            </div>
+
+            <button type="submit" id="addData" class="btn btn-primary">Submit</button>
+        </form>
+
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+        <script src="assets/js/app.js"></script>
+    </div>
+</body>
+
+</html>
