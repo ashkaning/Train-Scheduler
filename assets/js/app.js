@@ -26,9 +26,7 @@ $(document).ready(function () {
         destination = $("#dest").val().trim()
         firstDate = moment($("#fdate").val().trim(), "HH:mm").format("HH:mm");
         frequency = $("#freq").val().trim()
-        //alert("hi")
-
-        // console.log(convertedDate)
+        
         database.ref().push({
             trainName: trainName,
             destination: destination,
@@ -55,32 +53,28 @@ $(document).ready(function () {
        var startTimeHours = momentStartTimeObj.format('HH')
        var startTimeMinutes = momentStartTimeObj.format('mm')
        
+       var hoursAway =moment(startTime,"hours").diff(moment(nowTimeAll,"hours"),"hours")
+       var minutesAway =moment(startTime,":minutes").diff(moment(nowTimeAll,":minutes"),"minutes")
+
+       
        if(startTimeHours > nowTimeH)
        {
-        //minDiff = startTimeMinutes-nowTimeM
-        //hourDiff = startTimeHours-nowTimeH
-        var minutesAway =moment(startTime,"hours").diff(moment(nowTimeAll,"hours"),"hours")
+        
+        
+        console.log(hoursAway)
         console.log(minutesAway)
-        //console.log(hourDiff)
+        
        }
        else{
            
        }
 
-
-      // minDiff = moment.duration(end.diff(startTime));
-       
-       
-
-       
-       
-       // console.log(Math.floor(convertDurationToMinutes/frequencyDB))
         var newRow = $("<tr>").append(
             $("<td>").text(snapshot.val().trainName),
             $("<td>").text(snapshot.val().destination),
             $("<td>").text(snapshot.val().frequency),
             $("<td>").text(""),
-            $("<td>").text()
+            $("<td>").text(" ")
         )
         $(".table tbody").append(newRow)
     })
