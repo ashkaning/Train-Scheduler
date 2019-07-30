@@ -48,33 +48,39 @@ $(document).ready(function () {
        var nowTimeM = moment().format('mm')
        //////////////Saved time////////   
        var startTime = snapshot.val().firstDate
-       
+       var frequencyTime = snapshot.val().frequency
+
+      
        var momentStartTimeObj = moment(startTime, 'HH:mm')
        var startTimeHours = momentStartTimeObj.format('HH')
        var startTimeMinutes = momentStartTimeObj.format('mm')
        
        var hoursAway =moment(startTime,"hours").diff(moment(nowTimeAll,"hours"),"hours")
        var minutesAway =moment(startTime,":minutes").diff(moment(nowTimeAll,":minutes"),"minutes")
-
+        //console.log(hoursAway)
+       if(hoursAway>0 )
+        {
+            
+            var now= startTime
+            nowHour = moment(now, 'hh:mm').format('hh')
+            convertNowHourToMinutes = nowHour*60
+            nowMinute =  moment(now, 'hh:mm').format('mm')
+            var minutesAway = convertNowHourToMinutes+nowMinute
+        }
+        else{
+            var now= moment(nowTimeAll, "HH:mm").add(frequencyTime, "minutes").format('HH:mm')
+            nowHour = moment(now, 'hh:mm').format('hh')
+            convertNowHourToMinutes = nowHour*60
+            nowMinute =  moment(now, 'hh:mm').format('mm')
+            var minutesAway = convertNowHourToMinutes+nowMinute
+        }
        
-       if(startTimeHours > nowTimeH)
-       {
-        
-        
-        console.log(hoursAway)
-        console.log(minutesAway)
-        
-       }
-       else{
-           
-       }
-
         var newRow = $("<tr>").append(
             $("<td>").text(snapshot.val().trainName),
             $("<td>").text(snapshot.val().destination),
             $("<td>").text(snapshot.val().frequency),
-            $("<td>").text(""),
-            $("<td>").text(" ")
+            $("<td>").text(now),
+            $("<td>").text(minutesAway)
         )
         $(".table tbody").append(newRow)
     })
